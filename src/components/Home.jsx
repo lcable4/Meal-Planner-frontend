@@ -11,6 +11,11 @@ function Home() {
           within.
         </h2>
       </div>
+      <div className="homeMealPlanDiv">
+        <h2>
+          <Link to="/MealPlan">Create a custom meal plan</Link>
+        </h2>
+      </div>
       <div id="homeBottomDiv"></div>
     </div>
   );
