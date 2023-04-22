@@ -1,5 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { Navbar, Home, Login, Register, Profile, Cart, MealPlan } from "./";
+import {
+  Navbar,
+  Home,
+  Login,
+  Register,
+  Profile,
+  Cart,
+  MealPlan,
+  Meals,
+} from "./";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { getAllMeals } from "../apiAdapter";
 
@@ -13,9 +22,7 @@ const Main = () => {
   useEffect(() => {
     async function getMeals() {
       const meal = await getAllMeals();
-      meal.forEach((m) => {
-        m.ingredients = JSON.parse(m.ingredients);
-      });
+      console.log(meal, "MEAL LOG");
       setMeals(meal);
     }
     getMeals();
@@ -41,6 +48,7 @@ const Main = () => {
           <Route path="/Register" element={<Register />} />
           <Route path="/Profile" element={<Profile />} />
           <Route path="/Cart" element={<Cart />} />
+          <Route path="/Meals" element={<Meals meals={meals} />} />
           <Route path="/MealPlan" element={<MealPlan meals={meals} />} />
         </Routes>
       </div>

@@ -1,9 +1,22 @@
 import React from "react";
 
-function Meals() {
+function Meals(props) {
+  let meals = props.meals;
+  console.log(meals, "MEALS LOG");
   return (
-    <div className="meals">
-      <h1>Meals</h1>
+    <div>
+      {meals.map((meal) => (
+        <div key={meal.id}>
+          <h2>{meal.name}</h2>
+          <ul>
+            {JSON.parse(meal.ingredients).map((ingredient) => (
+              <li key={ingredient.id}>
+                {ingredient.name}: {ingredient.quantity} {ingredient.unit}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
     </div>
   );
 }

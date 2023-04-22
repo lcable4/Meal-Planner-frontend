@@ -6,6 +6,7 @@ export const getAllMeals = async () => {
       method: "GET",
     });
     const result = await response.json();
+    console.log(result, "RESULT LOG");
 
     return result;
   } catch (error) {
