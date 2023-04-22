@@ -1,14 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-  Navbar,
-  Home,
-  Login,
-  Register,
-  Profile,
-  Cart,
-  MealPlan,
-  Meals,
-} from "./";
+import { Navbar, Home, Login, Register, Profile, Cart, MealPlan } from "./";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { getAllMeals } from "../apiAdapter";
 
@@ -19,13 +10,16 @@ const Main = () => {
     localStorage.getItem("isGuestUser") === "true"
   );
   console.log(meals, "MEALS");
+
   useEffect(() => {
     async function getMeals() {
-      const meal = await getAllMeals();
-      console.log(meal, "MEAL LOG");
-      setMeals(meal);
+      const meals = await getAllMeals();
+      console.log(meals, "MEAL LOG");
+
+      setMeals(meals);
     }
     getMeals();
+
     const loggedIn = localStorage.getItem("loggedIn");
     setIsLoggedIn(loggedIn === "true");
 
@@ -48,7 +42,7 @@ const Main = () => {
           <Route path="/Register" element={<Register />} />
           <Route path="/Profile" element={<Profile />} />
           <Route path="/Cart" element={<Cart />} />
-          <Route path="/Meals" element={<Meals meals={meals} />} />
+
           <Route path="/MealPlan" element={<MealPlan meals={meals} />} />
         </Routes>
       </div>
