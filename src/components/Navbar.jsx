@@ -14,7 +14,7 @@ const Navbar = (props) => {
   return (
     <div id="navbar">
       <h2>
-        <Link to="/">I am navbar</Link>{" "}
+        <Link to="/">Home</Link>{" "}
       </h2>
       <div className="navButtonsDiv">
         {!props.isLoggedIn && (

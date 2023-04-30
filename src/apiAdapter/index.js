@@ -12,3 +12,14 @@ export const getAllMeals = async () => {
     console.log(error);
   }
 };
+
+export const getMealPlanById = async (mealPlanId) => {
+  try {
+    const response = await fetch(`${BASE_URL}meals/${mealPlanId}`, {
+      method: "GET",
+    });
+    const result = await response.json();
+
+    return result;
+  } catch (error) {}
+};
