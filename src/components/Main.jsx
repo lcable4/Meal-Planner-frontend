@@ -12,14 +12,6 @@ const Main = () => {
   console.log(meals, "MEALS");
 
   useEffect(() => {
-    async function getMeals() {
-      const meals = await getAllMeals();
-      console.log(meals, "MEAL LOG");
-
-      setMeals(meals);
-    }
-    getMeals();
-
     const loggedIn = localStorage.getItem("loggedIn");
     setIsLoggedIn(loggedIn === "true");
 

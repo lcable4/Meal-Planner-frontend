@@ -1,8 +1,18 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { getAllMeals } from "../apiAdapter";
 
-function MealPlan(props) {
-  let meals = props.meals;
+function MealPlan() {
+  const [meals, setMeals] = useState([]);
+
+  useEffect(() => {
+    async function getMeals() {
+      const meals = await getAllMeals();
+      setMeals(meals);
+    }
+    getMeals();
+  }, []);
+
   console.log(meals, "meals log");
   return (
     <div className="mealPlan">
@@ -11,7 +21,6 @@ function MealPlan(props) {
       {meals.map((meal) => (
         <div key={meal.id}>
           <h2>{meal.name}</h2>
-          <h3>{meal.description}</h3>
           <ul>
             {meal.ingredients.map((ingredient) => (
               <li key={ingredient.id}>
@@ -19,6 +28,7 @@ function MealPlan(props) {
               </li>
             ))}
           </ul>
+          <h3>{meal.description}</h3>
         </div>
       ))}
       <div className="mealPlanDiv">
