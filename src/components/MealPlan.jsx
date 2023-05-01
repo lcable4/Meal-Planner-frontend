@@ -1,30 +1,105 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { getAllMeals, getMealPlanById } from "../apiAdapter";
+import { Link, useParams } from "react-router-dom";
+import { getMealPlanByWeek, getMealById } from "../apiAdapter";
 
 function MealPlan() {
   const [meals, setMeals] = useState([]);
-  const [mealTags, setMealTags] = useState([]);
   const [dinners, setDinners] = useState([]);
+  const [breakfasts, setBreakfasts] = useState([]);
+  const [drinks, setDrinks] = useState([]);
+  const [desserts, setDesserts] = useState([]);
+  const week = 1;
 
-  console.log(dinners);
+  const daysOfWeek = [
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+    "Sunday",
+  ];
+
+  console.log(meals);
+  console.log(week, "week");
+
+  function getDinners(meals) {
+    const dinnerMeals = [];
+    meals.forEach((meal) => {
+      const tags = meal.tags.map((tag) => tag.name);
+      if (tags.includes("Dinner")) {
+        dinnerMeals.push(meal);
+      }
+    });
+    return dinnerMeals;
+  }
+
+  function getBreakfasts(meals) {
+    const breakfastMeals = [];
+    meals.forEach((meal) => {
+      const tags = meal.tags.map((tag) => tag.name);
+      if (tags.includes("Breakfast")) {
+        breakfastMeals.push(meal);
+      }
+    });
+    return breakfastMeals;
+  }
+
+  function getDrinks(meals) {
+    const drinkMeals = [];
+    meals.forEach((meal) => {
+      const tags = meal.tags.map((tag) => tag.name);
+      if (tags.includes("Drinks")) {
+        drinkMeals.push(meal);
+      }
+    });
+    return drinkMeals;
+  }
+
+  function getDesserts(meals) {
+    const dessertMeals = [];
+    meals.forEach((meal) => {
+      const tags = meal.tags.map((tag) => tag.name);
+      if (tags.includes("Dessert")) {
+        dessertMeals.push(meal);
+      }
+    });
+    return dessertMeals;
+  }
 
   useEffect(() => {
     async function getMeals() {
-      const meals = await getAllMeals();
-      const mealTags = meals.map((meal) => meal.tags.name);
-      console.log(mealTags, "Meal Tags log");
+      const mealPlan = await getMealPlanByWeek(week);
+      const mealIds = mealPlan[0].meal_ids; // get meal ids from first meal plan
+      const meals = [];
+      for (let i = 0; i < mealIds.length; i++) {
+        const mealId = mealIds[i];
+        const meal = await getMealById(mealId);
+        meals.push(meal);
+      }
+      const dinnerMeals = getDinners(meals);
+      const breakfastMeals = getBreakfasts(meals);
+      const drinkMeals = getDrinks(meals);
+      const dessertMeals = getDesserts(meals);
       setMeals(meals);
-      setMealTags(mealTags);
+      setDinners(dinnerMeals);
+      setBreakfasts(breakfastMeals);
+      setDrinks(drinkMeals);
+      setDesserts(dessertMeals);
     }
     getMeals();
   }, []);
-
+  console.log(dinners, "dinners");
+  console.log(breakfasts, "breakfasts");
+  console.log(drinks, "drinks");
+  console.log(desserts, "desserts");
   console.log(meals, "meals log");
   return (
     <>
-      <h1>The Menu</h1>
-      <h4>Seed to Sequoia Nutritional Therapy</h4>
+      <div className="mealPlanTitle">
+        <h1>The Menu</h1>
+        <h4>Seed to Sequoia Nutritional Therapy</h4>
+      </div>
       <div className="theMenu">
         <>
           <div className="leftContainer">
@@ -35,24 +110,19 @@ function MealPlan() {
                 </div>
               </div>
               <div className="rightDinner">
-                <div className="monday">
-                  <label htmlFor="monday">Monday</label>
-                </div>
-                <div className="tuesday">
-                  <label htmlFor="tuesday">Tuesday</label>
-                </div>
-                <div className="wednesday">
-                  <label htmlFor="wednesday">Wednesday</label>
-                </div>
-                <div className="thursday">
-                  <label htmlFor="thursday">Thursday</label>
-                </div>
-                <div className="friday">
-                  <label htmlFor="friday">Friday</label>
-                </div>
-                <div className="saturday">
-                  <label htmlFor="saturday">Saturday</label>
-                </div>
+                <>
+                  {dinners.map((dinner, index) => (
+                    <div
+                      key={dinner.id}
+                      className={daysOfWeek[index].toLowerCase()}
+                    >
+                      <label htmlFor={daysOfWeek[index]}>
+                        {daysOfWeek[index]}
+                      </label>
+                      <div>{dinner.name}</div>
+                    </div>
+                  ))}
+                </>
               </div>
             </div>
           </div>
@@ -60,13 +130,52 @@ function MealPlan() {
             <div className="breakfast">
               <div className="leftBreakfast">
                 <div>
-                  <h2>Breakfast</h2>
+                  <h3>Breakfast</h3>
                 </div>
               </div>
-              <div className="rightBreakfast"></div>
+              <div className="rightBreakfast">
+                <>
+                  {breakfasts.map((breakfast, index) => (
+                    <div key={breakfast.id}>
+                      <div>{breakfast.name}</div>
+                    </div>
+                  ))}
+                </>
+              </div>
             </div>
-            <div className="drinks"></div>
-            <div className="dessert"></div>
+            <div className="drinks">
+              <div className="leftDrinks">
+                <div>
+                  <h3>Drinks</h3>
+                </div>
+              </div>
+              <div className="rightDrinks">
+                <>
+                  {drinks.map((drink, index) => (
+                    <div key={drink.id}>
+                      <div>{drink.name}</div>
+                    </div>
+                  ))}
+                </>
+              </div>
+            </div>
+
+            <div className="dessert">
+              <div className="leftDessert">
+                <div>
+                  <h3>Dessert</h3>
+                </div>
+              </div>
+              <div className="rightDessert">
+                <>
+                  {desserts.map((dessert, index) => (
+                    <div key={dessert.id}>
+                      <div>{dessert.name}</div>
+                    </div>
+                  ))}
+                </>
+              </div>
+            </div>
           </div>
         </>
       </div>
