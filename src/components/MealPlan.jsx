@@ -188,10 +188,11 @@ function MealPlan() {
           {meals.map((meal) => (
             <div key={meal.id}>
               <h2>{meal.name}</h2>
+              <h4>{meal.servings} servings</h4>
               <ul>
                 {meal.ingredients.map((ingredient) => (
                   <li key={ingredient.id}>
-                    {ingredient.name} - {ingredient.quantity} {ingredient.unit}
+                    {ingredient.quantity} {ingredient.unit} {ingredient.name}
                   </li>
                 ))}
               </ul>
