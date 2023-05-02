@@ -1,5 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { Navbar, Home, Login, Register, Profile, Cart, MealPlan } from "./";
+import {
+  Navbar,
+  Home,
+  Login,
+  Register,
+  Profile,
+  Cart,
+  MealPlan,
+  GroceryList,
+} from "./";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { getAllMeals } from "../apiAdapter";
 
@@ -34,8 +43,8 @@ const Main = () => {
           <Route path="/Register" element={<Register />} />
           <Route path="/Profile" element={<Profile />} />
           <Route path="/Cart" element={<Cart />} />
-
           <Route path="/MealPlan" element={<MealPlan meals={meals} />} />
+          <Route path="/GroceryList" element={<GroceryList />} />
         </Routes>
       </div>
     </BrowserRouter>

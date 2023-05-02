@@ -200,7 +200,9 @@ function MealPlan() {
             </div>
           ))}
           <div className="mealPlanDiv">
-            <Link>Customize your plan</Link>
+            <Link to={{ pathname: "/GroceryList", state: { meals: meals } }}>
+              View this week's grocery list
+            </Link>
           </div>
         </div>
       </div>

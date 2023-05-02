@@ -129,3 +129,15 @@ body {
 .theRecipes h4 {
   text-align: center;
 }
+
+/* GROCERY LIST */
+
+.groceryList {
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+.groceryList h3 {
+  margin: 0;
+}
