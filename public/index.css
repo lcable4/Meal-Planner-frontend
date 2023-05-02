@@ -133,11 +133,29 @@ body {
 /* GROCERY LIST */
 
 .groceryList {
-  height: 90vh;
+  height: 93vh;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+  border: 1px solid black;
 }
+
+.gl_mealsList,
+.gl_shoppingList {
+  border: 1px solid black;
+}
+
 .groceryList h3 {
   margin: 0;
+}
+.groceryList li {
+  font-weight: bold;
+}
+
+.groceryList h1,
+.groceryList h3,
+.gl_shoppingList h4,
+.gl_mealsList h4,
+.gl_mealsList h3 {
+  text-align: center;
 }

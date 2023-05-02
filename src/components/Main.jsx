@@ -13,12 +13,10 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { getAllMeals } from "../apiAdapter";
 
 const Main = () => {
-  const [meals, setMeals] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isGuestUser, setIsGuestUser] = useState(
     localStorage.getItem("isGuestUser") === "true"
   );
-  console.log(meals, "MEALS");
 
   useEffect(() => {
     const loggedIn = localStorage.getItem("loggedIn");
@@ -43,7 +41,7 @@ const Main = () => {
           <Route path="/Register" element={<Register />} />
           <Route path="/Profile" element={<Profile />} />
           <Route path="/Cart" element={<Cart />} />
-          <Route path="/MealPlan" element={<MealPlan meals={meals} />} />
+          <Route path="/MealPlan" element={<MealPlan />} />
           <Route path="/GroceryList" element={<GroceryList />} />
         </Routes>
       </div>

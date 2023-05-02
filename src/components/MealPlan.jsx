@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { getMealPlanByWeek, getMealById } from "../apiAdapter";
 
 function MealPlan() {
@@ -20,7 +20,7 @@ function MealPlan() {
     "Sunday",
   ];
 
-  console.log(meals);
+  console.log(meals, "Meals log");
   console.log(week, "week");
 
   function getDinners(meals) {
@@ -89,11 +89,7 @@ function MealPlan() {
     }
     getMeals();
   }, []);
-  console.log(dinners, "dinners");
-  console.log(breakfasts, "breakfasts");
-  console.log(drinks, "drinks");
-  console.log(desserts, "desserts");
-  console.log(meals, "meals log");
+
   return (
     <>
       <div className="mealPlanTitle">
@@ -200,7 +196,7 @@ function MealPlan() {
             </div>
           ))}
           <div className="mealPlanDiv">
-            <Link to={{ pathname: "/GroceryList", state: { meals: meals } }}>
+            <Link to="/GroceryList" state={{ meals: meals }}>
               View this week's grocery list
             </Link>
           </div>
