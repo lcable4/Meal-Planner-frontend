@@ -144,6 +144,12 @@ body {
 .gl_shoppingList {
   border: 1px solid black;
 }
+.gl_meal {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
 
 .groceryList h3 {
   margin: 0;
@@ -157,5 +163,20 @@ body {
 .gl_shoppingList h4,
 .gl_mealsList h4,
 .gl_mealsList h3 {
+  text-align: center;
+}
+.protein div,
+.produce div,
+.dairy div,
+.frozen div,
+.pantry div {
+  display: flex;
+  flex-direction: row;
+}
+.protein p,
+.produce p,
+.dairy p,
+.frozen p,
+.pantry p {
   text-align: center;
 }
