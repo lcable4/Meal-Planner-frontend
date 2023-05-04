@@ -167,7 +167,7 @@ function Groceries() {
             </div>
           ))}
         </div>
-        <div>
+        <div className="staples">
           <h4>Staples to have on hand</h4>
           <ul>
             <li>Organic, Grass Fed, Butter</li>
@@ -187,7 +187,7 @@ function Groceries() {
           </ul>
         </div>
         {Object.keys(shoppingList).length > 0 && (
-          <button onClick={() => window.print()}>Print Ingredients List</button>
+          <button onClick={() => window.print()}>Print Grocery List</button>
         )}
       </div>
     </>

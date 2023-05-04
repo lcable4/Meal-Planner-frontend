@@ -42,14 +42,14 @@ function GroceryList() {
           <p>
             The less ingredients something has, the better! Qualities of foods
             to look for include:
-            <ul>
-              <li>Organic</li>
-              <li>Grass-fed</li>
-              <li>Pasture-raised meats/dairy</li>
-              <li>Organic produce/pantry basics</li>
-            </ul>
-            If you cannot find or afford these parameters, that is okay.
           </p>
+          <ul>
+            <li>Organic</li>
+            <li>Grass-fed</li>
+            <li>Pasture-raised meats/dairy</li>
+            <li>Organic produce/pantry basics</li>
+          </ul>
+          <p>If you cannot find or afford these parameters, that is okay.</p>
         </div>
         <div className="gl_information">
           <p>

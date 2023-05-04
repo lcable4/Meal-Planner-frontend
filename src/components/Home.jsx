@@ -68,6 +68,43 @@ function Home() {
           <h3>$10 PER MONTH</h3>
         </div>
       </div>
+      <div id="homeContainer2">
+        <div className="weeklySubTop">
+          <div className="weeklyPlanImg">
+            <img src="/images/weeklyPlan.png" alt="weekly plan" />
+          </div>
+          <div className="weeklyPlanSubscription">
+            <h2>Monthly Meal Plan Subscription</h2>
+            <p>
+              4 weeks of meals planned for you. See the photo to the left for
+              the full menu. Each week features 6 dinners, 1 breakfast, 2
+              drinks, and 1 dessert. Includes all recipes and grocery lists by
+              week.
+            </p>
+          </div>
+        </div>
+        <div className="lists">
+          <div className="listDiv">
+            <ul>
+              <li>Gluten Free</li>
+              <li>Printer Friendly</li>
+              <li>$15</li>
+            </ul>
+          </div>
+        </div>
+        <div className="weeklyPlanLinks">
+          <h2>CLICK HERE TO PURCHASE</h2>
+        </div>
+      </div>
+      <div id="homeContainer2">
+        <div className="homeFormDiv">
+          <p>
+            Fill out the form below to get in touch and schedule a free
+            discovery call.
+          </p>
+          <p>Let's discuss your health goals, concerns and budget.</p>
+        </div>
+      </div>
     </>
   );
 }
