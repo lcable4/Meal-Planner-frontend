@@ -1,11 +1,23 @@
+/* Colors */
+
+/* #CDCFC0
+#423F32
+#F1EBE5
+#000000 */
+
 body {
   margin: 0;
+  height: 100vh;
+  background-color: #cdcfc0;
+  font-family: "Ysabeau", sans-serif;
 }
 
 #navbar {
-  background-color: black;
+  background-color: #cdcfc0;
   color: white;
   display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   align-items: center;
   flex-grow: 1;
   max-height: 10%;
@@ -14,12 +26,37 @@ body {
 /* MEAL PLAN */
 .mealPlanTitle {
   text-align: center;
+  display: flex;
+  flex-direction: row-reverse;
+  width: 100%;
+  justify-content: center;
 }
+.mealPlanTitle div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.mealPlanTitle h1,
+.mealPlanTitle h4 {
+  margin: 0;
+}
+.mealPlanImg {
+  height: 150px;
+}
+.mealPlanImg img {
+  height: 100%;
+}
+
 .theMenu {
   border: 1px solid black;
-  height: 80vh;
+  height: 75vh;
   display: flex;
   flex-direction: row;
+}
+
+.theMenu,
+.tipOfTheWeek {
+  background-color: #d2e2b6b9;
 }
 .leftContainer {
   border: 1px solid black;
@@ -144,6 +181,24 @@ body {
 .gl_shoppingList {
   border: 1px solid black;
 }
+
+.gl_shoppingList button {
+  background-color: #d0e1a8;
+  color: black;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
+.gl_shoppingList button:hover {
+  background-color: #d0e1a8;
+}
+
+@media print {
+  button {
+    display: none;
+  }
+}
+
 .gl_meal {
   display: flex;
   flex-direction: row;
@@ -179,4 +234,11 @@ body {
 .frozen p,
 .pantry p {
   text-align: center;
+}
+
+.theRecipes,
+.gl_information,
+.gl_mealsList,
+.gl_shoppingList {
+  background-color: white;
 }

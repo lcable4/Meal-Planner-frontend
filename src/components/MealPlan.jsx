@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { getMealPlanByWeek, getMealById } from "../apiAdapter";
+import { Groceries } from "./Groceries";
 
 function MealPlan() {
   const [meals, setMeals] = useState([]);
@@ -93,8 +94,13 @@ function MealPlan() {
   return (
     <>
       <div className="mealPlanTitle">
-        <h1>The Menu</h1>
-        <h4>Seed to Sequoia Nutritional Therapy</h4>
+        <div>
+          <h1>The Menu</h1>
+          <h4>Seed to Sequoia Nutritional Therapy</h4>
+        </div>
+        <div className="mealPlanImg">
+          <img src="/images/cactus.png" alt="cactus" />
+        </div>
       </div>
       <div className="theMenu">
         <>
