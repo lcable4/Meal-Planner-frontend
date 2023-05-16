@@ -1,5 +1,13 @@
 export const BASE_URL = "http://localhost:3000/api/";
 
+export function makeHeaders(token) {
+  const header = { "Content-Type": "application/json" };
+  if (token) {
+    header.Authorization = `Bearer ${token}`;
+  }
+  return header;
+}
+
 export const getAllMeals = async () => {
   try {
     const response = await fetch(`${BASE_URL}meals`, {

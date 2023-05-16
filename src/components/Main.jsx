@@ -8,16 +8,27 @@ import {
   Cart,
   MealPlan,
   GroceryList,
+  AdminLogin,
+  Admin,
+  AdminIngredients,
+  AdminMeals,
+  AdminMealPlans,
 } from "./";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { getAllMeals } from "../apiAdapter";
+import { authAdmin } from "../apiAdapter/admin";
+import AdminNavbar from "./AdminNavbar";
 
 const Main = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isGuestUser, setIsGuestUser] = useState(
     localStorage.getItem("isGuestUser") === "true"
   );
-
+  const [isAdmin, setIsAdmin] = useState(false);
+  const checkAdminStatus = async () => {
+    setIsAdmin(await authAdmin(localStorage.getItem("token")));
+  };
+  checkAdminStatus();
   useEffect(() => {
     const loggedIn = localStorage.getItem("loggedIn");
     setIsLoggedIn(loggedIn === "true");
@@ -34,7 +45,11 @@ const Main = () => {
   return (
     <BrowserRouter>
       <div id="main">
-        <Navbar setIsLoggedIn={setIsLoggedIn} isLoggedIn={isLoggedIn} />
+        {!isAdmin ? (
+          <Navbar setIsLoggedIn={setIsLoggedIn} isLoggedIn={isLoggedIn} />
+        ) : (
+          <AdminNavbar setIsAdmin={setIsAdmin} isAdmin={isAdmin} />
+        )}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/Login" element={<Login handleLogin={handleLogin} />} />
@@ -43,6 +58,11 @@ const Main = () => {
           <Route path="/Cart" element={<Cart />} />
           <Route path="/MealPlan" element={<MealPlan />} />
           <Route path="/GroceryList" element={<GroceryList />} />
+          <Route path="/adminLogin" element={<AdminLogin />} />
+          <Route path="/admin" element={<Admin />} />
+          <Route path="/adminIngredients" element={<AdminIngredients />} />
+          <Route path="/adminMeals" element={<AdminMeals />} />
+          <Route path="/adminMealPlans" element={<AdminMealPlans />} />
         </Routes>
       </div>
     </BrowserRouter>
