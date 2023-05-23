@@ -8,13 +8,14 @@ import {
   addMealToPlan,
   deleteMealFromPlan,
 } from "../apiAdapter/admin";
+import { AdminIngredients, AdminMeals, AdminMealPlans } from "./";
 import AdminLogin from "./AdminLogin";
 import { ColorModeContext, useMode } from "../theme";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import Topbar from "../scenes/global/Topbar";
 import Sidebar from "../scenes/global/Sidebar";
 import Dashboard from "../scenes/dashboard";
-// import Team from "../scenes/team";
+import Team from "../scenes/team";
 // import Invoices from "../scenes/invoices";
 // import Contacts from "../scenes/contacts";
 // import Bar from "../scenes/bar";
@@ -28,9 +29,6 @@ import Dashboard from "../scenes/dashboard";
 function Admin(props) {
   const navigate = useNavigate();
   const [theme, colorMode] = useMode();
-
-  console.log(props);
-  console.log(props.isAdminLoggedIn);
   const loggedIn = props.isAdminLoggedIn;
   const loginFunc = props.setIsAdminLoggedIn;
 
@@ -44,9 +42,26 @@ function Admin(props) {
             {loggedIn ? (
               <div className="homeAdmin">
                 <Sidebar />
-                <h1 id="admin-hello">
-                  You've reached the Admin Page, click a button to begin
-                </h1>
+
+                <Routes>
+                  <Route
+                    path="/adminIngredients"
+                    element={<AdminIngredients />}
+                  />
+                  <Route path="/adminMeals" element={<AdminMeals />} />
+                  <Route path="/adminMealPlans" element={<AdminMealPlans />} />
+                  <Route path="/admin/team" element={<Team />} />
+                  {/* <Route path="/admin/contacts" element={<Contacts />} /> */}
+                  {/* <Route path="/admin/invoices" element={<Invoices />} /> */}
+                  {/* <Route path="/admin/form" element={<Form />} /> */}
+                  {/* <Route path="/admin/bar" element={<Bar />} /> */}
+                  {/* <Route path="/admin/pie" element={<Pie />} /> */}
+                  {/* <Route path="/admin/line" element={<Line />} /> */}
+                  {/* <Route path="/admin/faq" element={<FAQ />} /> */}
+                  {/* <Route path="/admin/geography" element={<Geography />} /> */}
+                  {/* <Route path="/admin/calendar" element={<Calendar />} /> */}
+                </Routes>
+                <Dashboard />
               </div>
             ) : (
               navigate("/admin/login")
