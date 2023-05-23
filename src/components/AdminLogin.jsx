@@ -2,19 +2,20 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { adminLogin } from "../apiAdapter/admin";
 
-const AdminLogin = () => {
+const AdminLogin = (props) => {
   const [adminUser, setAdminUser] = useState("");
   const [adminPassword, setAdminPassword] = useState("");
   const [submitMessage, setSubmitMessage] = useState("");
-  const [isAdminLoggedIn, setIsAdminLoggedIn] = useState(false);
   const navigate = useNavigate();
+
+  console.log(props, "PROPS LOG");
 
   const handleAdminLogin = async (event) => {
     event.preventDefault();
     try {
       const result = await adminLogin(adminUser, adminPassword);
       if (result.token) {
-        setIsAdminLoggedIn(true); // Update admin login state
+        props.setIsAdminLoggedIn(true); // Update admin login state
         localStorage.setItem("admin", adminUser);
         localStorage.setItem("token", result.token);
         navigate("/admin"); // Navigate to the admin page
@@ -29,7 +30,7 @@ const AdminLogin = () => {
 
   return (
     <div className="admin">
-      {isAdminLoggedIn ? (
+      {props.isAdminLoggedIn ? (
         <h1 id="admin-hello">
           You've reached the Admin Page, click a button to begin
         </h1>
