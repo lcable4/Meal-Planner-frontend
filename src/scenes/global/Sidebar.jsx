@@ -144,6 +144,7 @@ const Sidebar = () => {
               >
                 Data
               </Typography>
+
               <Item
                 title="Manage Team"
                 to="/admin/team"
@@ -151,6 +152,7 @@ const Sidebar = () => {
                 selected={selected}
                 setSelected={setSelected}
               />
+
               <Item
                 title="Contacts Information"
                 to="/admin/contacts"

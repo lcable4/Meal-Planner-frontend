@@ -15,9 +15,9 @@ const AdminLogin = (props) => {
     try {
       const result = await adminLogin(adminUser, adminPassword);
       if (result.token) {
-        props.setIsAdminLoggedIn(true); // Update admin login state
         localStorage.setItem("admin", adminUser);
         localStorage.setItem("token", result.token);
+        props.setIsAdminLoggedIn(true)
         navigate("/admin"); // Navigate to the admin page
       } else {
         alert("Invalid admin credentials");

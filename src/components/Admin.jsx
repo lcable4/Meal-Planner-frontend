@@ -37,32 +37,36 @@ function Admin(props) {
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <div className="admin">
+          {loggedIn && <Topbar />}
           <main className="content">
-            <Topbar />
             {loggedIn ? (
-              <div className="homeAdmin">
+              <>
                 <Sidebar />
 
-                <Routes>
-                  <Route
-                    path="/adminIngredients"
-                    element={<AdminIngredients />}
-                  />
-                  <Route path="/adminMeals" element={<AdminMeals />} />
-                  <Route path="/adminMealPlans" element={<AdminMealPlans />} />
-                  <Route path="/admin/team" element={<Team />} />
-                  {/* <Route path="/admin/contacts" element={<Contacts />} /> */}
-                  {/* <Route path="/admin/invoices" element={<Invoices />} /> */}
-                  {/* <Route path="/admin/form" element={<Form />} /> */}
-                  {/* <Route path="/admin/bar" element={<Bar />} /> */}
-                  {/* <Route path="/admin/pie" element={<Pie />} /> */}
-                  {/* <Route path="/admin/line" element={<Line />} /> */}
-                  {/* <Route path="/admin/faq" element={<FAQ />} /> */}
-                  {/* <Route path="/admin/geography" element={<Geography />} /> */}
-                  {/* <Route path="/admin/calendar" element={<Calendar />} /> */}
-                </Routes>
-                <Dashboard />
-              </div>
+                <div className="homeAdmin">
+                  <Routes>
+                    <Route
+                      path="/adminIngredients"
+                      element={<AdminIngredients />}
+                    />
+                    <Route path="/adminMeals" element={<AdminMeals />} />
+                    <Route
+                      path="/adminMealPlans"
+                      element={<AdminMealPlans />}
+                    />
+                    <Route path="/admin/team" element={<Team />} />
+                    {/* <Route path="/admin/contacts" element={<Contacts />} /> */}
+                    {/* <Route path="/admin/invoices" element={<Invoices />} /> */}
+                    {/* <Route path="/admin/form" element={<Form />} /> */}
+                    {/* <Route path="/admin/bar" element={<Bar />} /> */}
+                    {/* <Route path="/admin/pie" element={<Pie />} /> */}
+                    {/* <Route path="/admin/line" element={<Line />} /> */}
+                    {/* <Route path="/admin/faq" element={<FAQ />} /> */}
+                    {/* <Route path="/admin/geography" element={<Geography />} /> */}
+                    {/* <Route path="/admin/calendar" element={<Calendar />} /> */}
+                  </Routes>
+                </div>
+              </>
             ) : (
               navigate("/admin/login")
             )}

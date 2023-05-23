@@ -40,6 +40,9 @@ body {
 .admin {
   width: 100%;
 }
+.content {
+  display: flex;
+}
 .homeAdmin {
   display: flex;
 }
