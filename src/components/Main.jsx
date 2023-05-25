@@ -8,11 +8,6 @@ import {
   Cart,
   MealPlan,
   GroceryList,
-  AdminLogin,
-  Admin,
-  AdminIngredients,
-  AdminMeals,
-  AdminMealPlans,
 } from "./";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { getAllMeals } from "../apiAdapter";
@@ -58,11 +53,6 @@ const Main = () => {
           <Route path="/Cart" element={<Cart />} />
           <Route path="/MealPlan" element={<MealPlan />} />
           <Route path="/GroceryList" element={<GroceryList />} />
-          <Route path="/adminLogin" element={<AdminLogin />} />
-          <Route path="/admin" element={<Admin />} />
-          <Route path="/adminIngredients" element={<AdminIngredients />} />
-          <Route path="/adminMeals" element={<AdminMeals />} />
-          <Route path="/adminMealPlans" element={<AdminMealPlans />} />
         </Routes>
       </div>
     </BrowserRouter>

@@ -48,11 +48,12 @@ body {
   border: 1px solid #423f32;
   width: 80%;
 }
-.homeMealPlanDiv h2 {
+.homeMealPlanDiv h2,
+.mealPlanDiv {
   text-align: center;
 }
-#homeContainer2 {
-  height: 100vh;
+.homeContainer2 {
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -62,26 +63,19 @@ body {
   width: 90%;
   margin: 5px;
 }
-#homeContainer2 p {
+.homeContainer2 p {
   font-size: 20px;
 }
-#homeContainer2 h2 {
+.homeContainer2 h2 {
   text-align: center;
   font-size: 25px;
 }
-#homeContainer2 h3 {
+.homeContainer2 h3 {
   text-align: center;
 }
-.weeklyPlanImg {
-  height: 80%;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 2px;
-}
+
 .weeklyPlanImg img {
-  height: 100%;
+  width: 85%;
 }
 .weeklyPlanSubscription {
   height: 100%;
@@ -95,7 +89,7 @@ body {
 .weeklySubTop {
   padding: 3px;
   padding-top: 10px;
-  height: 50%;
+  height: 70%;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -103,6 +97,9 @@ body {
 }
 .weeklySubTop p {
   font-size: 20px;
+}
+.weeklyPlanLinks {
+  overflow: auto;
 }
 .weeklyPlanLinks h2,
 .weeklyPlanLinks h3 {
@@ -173,7 +170,7 @@ body {
 }
 
 .theMenu {
-  height: 75vh;
+  height: 80vh;
   display: flex;
   flex-direction: row;
 }
@@ -185,6 +182,7 @@ body {
 .leftContainer {
   border: 1px solid black;
   width: 50%;
+  padding: 5px;
 }
 .dinner,
 .breakfast,
@@ -219,8 +217,9 @@ body {
   writing-mode: vertical-rl;
   text-orientation: upright;
   text-transform: uppercase;
-  font-size: 18px;
+  font-size: 16px;
   margin: 0;
+  padding: 5px 0 5px 0;
 }
 
 .rightDinner {
@@ -386,7 +385,7 @@ body {
   width: 90%;
   margin: 5px;
 
-  padding: 5px;
+  padding: 8px;
   display: flex;
   flex-direction: column;
   justify-content: center;
