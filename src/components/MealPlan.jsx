@@ -97,6 +97,18 @@ function MealPlan() {
         <div>
           <h1>The Menu</h1>
           <h4>Seed to Sequoia Nutritional Therapy</h4>
+          <div
+            className="mealPlanDiv"
+            style={{ fontSize: "20px", padding: "20px 0 20px 0" }}
+          >
+            <Link
+              to="/GroceryList"
+              state={{ meals: meals }}
+              style={{ textDecoration: "none", color: "blue" }}
+            >
+              View this week's grocery list
+            </Link>
+          </div>
         </div>
         <div className="mealPlanImg">
           <img src="/images/cactus.png" alt="cactus" />
@@ -202,18 +214,6 @@ function MealPlan() {
             </div>
           ))}
         </div>
-      </div>
-      <div
-        className="mealPlanDiv"
-        style={{ fontSize: "20px", padding: "20px 0 20px 0" }}
-      >
-        <Link
-          to="/GroceryList"
-          state={{ meals: meals }}
-          style={{ textDecoration: "none", color: "blue" }}
-        >
-          View this week's grocery list
-        </Link>
       </div>
     </>
   );
