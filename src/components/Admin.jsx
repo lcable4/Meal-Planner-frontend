@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Routes, Route } from "react-router-dom";
 import {
   updateMeal,
   createMeal,
@@ -8,82 +8,72 @@ import {
   addMealToPlan,
   deleteMealFromPlan,
 } from "../apiAdapter/admin";
+import { AdminIngredients, AdminMeals, AdminMealPlans } from "./";
 import AdminLogin from "./AdminLogin";
+import { ColorModeContext, useMode } from "../theme";
+import { CssBaseline, ThemeProvider } from "@mui/material";
+import Topbar from "../scenes/global/Topbar";
+import Sidebar from "../scenes/global/Sidebar";
+import Dashboard from "../scenes/dashboard";
+import Team from "../scenes/team";
+// import Invoices from "../scenes/invoices";
+// import Contacts from "../scenes/contacts";
+// import Bar from "../scenes/bar";
+// import Form from "../scenes/form";
+// import Line from "../scenes/line";
+// import Pie from "../scenes/pie";
+// import FAQ from "../scenes/faq";
+// import Geography from "../scenes/geography";
+// import Calender from "../scenes/calendar";
 
-function Admin() {
-  const [isAdminLoggedIn, setIsAdminLoggedIn] = useState(false);
+function Admin(props) {
   const navigate = useNavigate();
-
-  const handleUpdateMeal = async (event) => {
-    event.preventDefault();
-    // Handle update meal logic
-  };
-
-  const handleCreateMeal = async (event) => {
-    event.preventDefault();
-    // Handle create meal logic
-  };
-
-  const handleAddMealPlan = async (event) => {
-    event.preventDefault();
-    // Handle add meal plan logic
-  };
-
-  const handleDeleteMeal = async (event) => {
-    event.preventDefault();
-    // Handle delete meal logic
-  };
-
-  const handleAddMealToPlan = async (event) => {
-    event.preventDefault();
-    // Handle add meal to plan logic
-  };
-
-  const handleDeleteMealFromPlan = async (event) => {
-    event.preventDefault();
-    // Handle delete meal from plan logic
-  };
+  const [theme, colorMode] = useMode();
+  const loggedIn = props.isAdminLoggedIn;
+  const loginFunc = props.setIsAdminLoggedIn;
 
   return (
-    <div className="admin">
-      {isAdminLoggedIn ? (
-        <div>
-          <h1 id="admin-hello">
-            You've reached the Admin Page, click a button to begin
-          </h1>
-          <div>
-            <h2>Update Meal</h2>
-            <form onSubmit={handleUpdateMeal}>{/* Update meal form */}</form>
-          </div>
-          <div>
-            <h2>Create Meal</h2>
-            <form onSubmit={handleCreateMeal}>{/* Create meal form */}</form>
-          </div>
-          <div>
-            <h2>Add Meal Plan</h2>
-            <form onSubmit={handleAddMealPlan}>{/* Add meal plan form */}</form>
-          </div>
-          <div>
-            <h2>Delete Meal</h2>
-            <form onSubmit={handleDeleteMeal}>{/* Delete meal form */}</form>
-          </div>
-          <div>
-            <h2>Add Meal to Plan</h2>
-            <form onSubmit={handleAddMealToPlan}>
-              {/* Add meal to plan form */}
-            </form>
-          </div>
-          <div>
-            <h2>Delete Meal from Plan</h2>
-            <form onSubmit={handleDeleteMealFromPlan}>
-              {/* Delete meal from plan form */}
-            </form>
-          </div>
+    <ColorModeContext.Provider value={colorMode}>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <div className="admin">
+          {loggedIn && <Topbar />}
+          <main className="content">
+            {loggedIn ? (
+              <>
+                <Sidebar />
+
+                <div className="homeAdmin">
+                  <Routes>
+                    <Route
+                      path="/adminIngredients"
+                      element={<AdminIngredients />}
+                    />
+                    <Route path="/adminMeals" element={<AdminMeals />} />
+                    <Route
+                      path="/adminMealPlans"
+                      element={<AdminMealPlans />}
+                    />
+                    <Route path="/admin/team" element={<Team />} />
+                    {/* <Route path="/admin/contacts" element={<Contacts />} /> */}
+                    {/* <Route path="/admin/invoices" element={<Invoices />} /> */}
+                    {/* <Route path="/admin/form" element={<Form />} /> */}
+                    {/* <Route path="/admin/bar" element={<Bar />} /> */}
+                    {/* <Route path="/admin/pie" element={<Pie />} /> */}
+                    {/* <Route path="/admin/line" element={<Line />} /> */}
+                    {/* <Route path="/admin/faq" element={<FAQ />} /> */}
+                    {/* <Route path="/admin/geography" element={<Geography />} /> */}
+                    {/* <Route path="/admin/calendar" element={<Calendar />} /> */}
+                  </Routes>
+                </div>
+              </>
+            ) : (
+              navigate("/admin/login")
+            )}
+          </main>
         </div>
-      ) : (
-        <AdminLogin setIsAdminLoggedIn={setIsAdminLoggedIn} />
-      )}
-    </div>
+      </ThemeProvider>
+    </ColorModeContext.Provider>
   );
 }
 
