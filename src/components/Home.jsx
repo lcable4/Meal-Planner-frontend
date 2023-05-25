@@ -2,6 +2,21 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 function Home() {
+  const scrollToWeeklyPlan = () => {
+    const weeklyPlanSection = document.getElementById("weeklyPlanSection");
+    weeklyPlanSection.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const scrollToMonthlyPlan = () => {
+    const monthlyPlanSection = document.getElementById("monthlyPlanSection");
+    monthlyPlanSection.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const scrollToForm = () => {
+    const formSection = document.getElementById("formSection");
+    formSection.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <>
       <div id="homeContainer">
@@ -19,17 +34,17 @@ function Home() {
             </h2>
           </div>
           <div className="homeMealPlanDiv">
-            <h2>Weekly Meal Plan.</h2>
+            <h2 onClick={scrollToWeeklyPlan}>Weekly Meal Plan.</h2>
           </div>
           <div className="homeMealPlanDiv">
-            <h2>Monthly Meal Plan.</h2>
+            <h2 onClick={scrollToMonthlyPlan}>Monthly Meal Plan.</h2>
           </div>
           <div className="homeMealPlanDiv">
-            <h2>Work With me.</h2>
+            <h2 onClick={scrollToForm}>Work With me.</h2>
           </div>
         </div>
       </div>
-      <div id="homeContainer2">
+      <div class="homeContainer2" id="weeklyPlanSection">
         <div className="weeklySubTop">
           <div className="weeklyPlanImg">
             <img src="/images/weeklyPlan.png" alt="weekly plan" />
@@ -68,7 +83,7 @@ function Home() {
           <h3>$10 PER MONTH</h3>
         </div>
       </div>
-      <div id="homeContainer2">
+      <div class="homeContainer2" id="monthlyPlanSection">
         <div className="weeklySubTop">
           <div className="weeklyPlanImg">
             <img src="/images/weeklyPlan.png" alt="weekly plan" />
@@ -96,7 +111,7 @@ function Home() {
           <h2>CLICK HERE TO PURCHASE</h2>
         </div>
       </div>
-      <div id="homeContainer2">
+      <div class="homeContainer2 " id="formSection">
         <div className="homeFormDiv">
           <p>
             Fill out the form below to get in touch and schedule a free

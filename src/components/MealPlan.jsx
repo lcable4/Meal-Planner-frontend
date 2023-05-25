@@ -201,12 +201,19 @@ function MealPlan() {
               <h3>{meal.description}</h3>
             </div>
           ))}
-          <div className="mealPlanDiv">
-            <Link to="/GroceryList" state={{ meals: meals }}>
-              View this week's grocery list
-            </Link>
-          </div>
         </div>
+      </div>
+      <div
+        className="mealPlanDiv"
+        style={{ fontSize: "20px", padding: "20px 0 20px 0" }}
+      >
+        <Link
+          to="/GroceryList"
+          state={{ meals: meals }}
+          style={{ textDecoration: "none", color: "blue" }}
+        >
+          View this week's grocery list
+        </Link>
       </div>
     </>
   );
