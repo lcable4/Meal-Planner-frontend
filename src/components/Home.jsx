@@ -30,7 +30,16 @@ function Home() {
         <div id="homeBottomDiv">
           <div className="homeMealPlanDiv">
             <h2>
-              <Link to="/MealPlan">View this week's meal plan.</Link>
+              <Link
+                to="/MealPlan"
+                style={{
+                  textDecoration: "none",
+                  color: "black",
+                  cursor: "pointer",
+                }}
+              >
+                View this week's meal plan.
+              </Link>
             </h2>
           </div>
           <div className="homeMealPlanDiv">
